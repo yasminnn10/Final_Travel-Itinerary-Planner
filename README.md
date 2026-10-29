@@ -392,17 +392,3 @@ Potential improvements include:
 - AI-assisted travel recommendations.
 
 ---
-
-## 10. Questions for the Instructor
-
-We would appreciate feedback on the following questions before implementation:
-
-1. **Are mock hotel and flight services acceptable for demonstrating the Facade pattern, or must we integrate real external APIs?**
-2. **Can we use predefined transportation and route data for the Fastest and Scenic Strategy implementations?**
-3. **Is the proposed functionality appropriate for a two-student final project, or should we reduce the scope?**
-4. **Is JavaFX an appropriate choice for the graphical user interface?**
-5. **Does the proposed integration of the six design patterns meet the project requirements?**
-
----
-
-**Note:** This README describes our planned project. The application is currently in the planning/development stage, and implementation details may change based on instructor feedback.
