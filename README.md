@@ -2,9 +2,8 @@
 
 ### Final Project — Software Design Patterns
 
-**Group:** SE-2532
+**Group:** SE-2532  
 **Team Members:**
-
 - Kashtayeva Yasmina
 - Byerik Farida
 
@@ -14,223 +13,396 @@
 
 ## 1. Project Overview
 
-**QazaqTrip** is a planned Java-based travel itinerary planner designed to help tourists organize trips to popular destinations in Kazakhstan.
+**QazaqTrip** is a Java-based travel itinerary planner designed to help tourists organize personalized trips across Kazakhstan.
 
-The application will allow users to select a city, choose multiple attractions, explore accommodation and dining options, compare travel routes, and generate a personalized itinerary.
+The application will guide users through a step-by-step planning process. Users will choose their travel destination and dates, select attractions, customize transportation between locations, specify their travel group, and decide whether they want hotel, flight, and cafe suggestions.
 
-Our goal is to create a user-friendly application that combines real tourist information with practical trip-planning features while demonstrating the integration of **six software design patterns**.
+Based on these selections, QazaqTrip will generate a **personalized day-by-day travel itinerary** with estimated arrival times, attraction visits, transportation details, meal breaks, and trip costs.
 
-The initial version will focus on three cities:
+The project will demonstrate the practical integration of **six software design patterns** within one application.
 
-- **Astana** — Modern architecture and cultural attractions.
-- **Almaty** — Mountains, nature, and city sightseeing.
-- **Turkistan** — Historical landmarks and cultural heritage.
+### Initial Destinations
+
+The first version will focus on three cities in Kazakhstan:
+
+- **Astana** — Modern architecture, museums, and cultural landmarks.
+- **Almaty** — Mountain attractions, parks, and urban sightseeing.
+- **Turkistan** — Historical sites and cultural heritage.
+
+Our goal is to create an interactive and visually appealing application that makes travel planning easier while demonstrating object-oriented design principles.
 
 ---
 
-## 2. Planned Application Features
+## 2. Application Workflow
 
-### 2.1 City Selection
+QazaqTrip will have a **welcome page, four planning steps, and a final itinerary page**.
 
-Users will be able to choose one of three destinations: Astana, Almaty, or Turkistan.
+Users will navigate between screens using clickable **Back** and **Continue** buttons.
 
-### 2.2 Trip Details
+### Welcome Page — Discover Kazakhstan
 
-Users will specify:
+The application will open with a welcoming screen featuring:
 
-- Trip duration (1–3 days).
-- Preferred starting time for daily activities.
+- QazaqTrip branding.
+- A short introduction to the application.
+- Visuals of Kazakhstan's travel destinations.
+- A **Start Planning** button.
 
-### 2.3 Multiple Attraction Selection
+Clicking **Start Planning** will open the trip-planning process.
 
-Users will be able to select several attractions at once.
+### Step 1 — The Trip: Where and When?
 
-Each attraction will include:
+Users will provide the basic details of their trip:
 
-- Name and location.
+- **Starting From:** Departure city.
+- **Destination:** Astana, Almaty, or Turkistan.
+- **Travel Dates:** Start and end dates.
+
+The application will calculate the trip duration from the selected dates.
+
+For the initial version, itinerary generation will focus on trips lasting **1–3 days**.
+
+### Step 2 — Explore Places: What to Visit?
+
+After choosing a destination, users will see attractions available in that city.
+
+Users will be able to **select multiple attractions**.
+
+Each attraction will display:
+
+- Name and photograph.
 - Short description.
-- Estimated visit duration.
+- Location.
 - Opening hours.
+- Estimated visit duration.
 - Entrance fee, where available.
 
-The application will use information about real attractions in Kazakhstan.
+For example, a user visiting Almaty might select:
 
-### 2.4 Route Planning
+- Kok-Tobe.
+- Medeu.
+- Shymbulak.
+- Panfilov Park.
 
-Users will be able to compare two routing strategies:
+The application will use information about real tourist attractions in Kazakhstan.
+
+### Step 3 — Route & Transportation: How to Travel?
+
+After selecting attractions, users will customize their route.
+
+#### Route Preferences
+
+Users will choose between two route-planning strategies:
 
 **Fastest Route**
-
-- Prioritizes shorter travel time.
-- Selects faster routes from available alternatives.
+- Prioritizes shorter travel times.
+- Selects faster alternatives from the available route data.
 
 **Scenic Route**
+- Prioritizes more scenic travel options.
+- May favor routes with sightseeing opportunities, even when they take longer.
 
-- Prioritizes sightseeing and scenic locations.
-- May include additional viewpoints or walking routes.
+#### Transportation Selection
 
-### 2.5 Transportation Selection
+Users will be able to choose transportation **separately for each segment of the route**.
 
-Users will be able to choose transportation separately for each part of their itinerary.
-
-Planned transportation options include:
+Planned options include:
 
 - Walking.
 - Taxi.
 - Bus.
-- Metro (where available).
-- LRT (where available).
-- Bicycle or electric scooter (where available).
+- Metro, where applicable.
+- LRT, where applicable.
+- Bicycle or electric scooter, where applicable.
 
-The application will display estimated travel times and costs.
+Available transportation options will depend on the city and route segment.
 
-For the initial version, route and transportation information will be based on predefined demonstration data rather than live navigation services.
+The application will display:
 
-### 2.6 Hotel Selection
+- Starting point and destination.
+- Available transportation options.
+- Estimated travel duration.
+- Estimated transportation cost.
 
-Users will be able to explore and select hotels in their chosen city.
+Users will also be able to review the order of their selected attractions.
 
-Hotel information will include:
+**Initial implementation:** Route alternatives, travel times, and transportation costs will use predefined demonstration data rather than live navigation services.
 
-- Hotel name and location.
-- Estimated price per night.
-- Check-in and check-out times.
+### Step 4 — Who's Going?
 
-### 2.7 Cafes and Meal Breaks
+Users will specify who they are traveling with.
 
-The itinerary will include meal breaks between attractions.
+The application will provide four options:
 
-Users will be able to choose cafes based on:
+- **Solo** — Traveling alone.
+- **Couple** — Traveling with a partner.
+- **Friends** — Traveling with friends.
+- **Family** — Traveling with family members.
 
-- Location.
-- Opening hours.
-- Estimated meal prices.
+Users will also be able to specify the **number of travelers**.
 
-### 2.8 Flight Information
+#### Optional Travel Suggestions
 
-The application will provide sample flight information between selected cities.
+This page will include switches for:
 
-Flight and hotel services will initially use **mock implementations**, allowing us to demonstrate the Facade pattern without connecting to external booking platforms.
+**Hotel Suggestions**
+- When enabled, the final itinerary will display hotel recommendations.
+- Hotel information will include estimated prices, location, and check-in/check-out times.
 
-### 2.9 Itinerary Generation
+**Flight Suggestions**
+- When enabled, the application will display sample flight options between the departure city and destination, where applicable.
 
-The application will generate a day-by-day travel plan containing:
+**Cafe Suggestions**
+- When enabled, the application will recommend cafes near selected attractions and suggest meal breaks.
 
-- Selected attractions.
+These options will be **optional**. Users can generate a travel itinerary without requesting hotel, flight, or cafe suggestions.
+
+The initial version will not support real bookings or payments.
+
+### Final Page — My Itinerary
+
+After completing the planning steps, users will click **Generate My Itinerary**.
+
+QazaqTrip will generate a personalized travel schedule based on the user's selections.
+
+The final page will include:
+
+#### Daily Schedule
+- Attractions organized by day.
 - Estimated arrival and departure times.
-- Travel time between locations.
-- Selected transportation.
-- Meal breaks.
-- Hotel information.
-- Estimated total trip cost.
+- Duration of each visit.
+- Transportation between locations.
+- Meal breaks, when selected.
+- Basic checks against attraction and cafe opening hours.
 
-The application will also aim to detect basic scheduling conflicts, such as visiting an attraction after its closing time.
+#### Route Overview
+- The order of selected attractions.
+- Transportation for each route segment.
+- Estimated travel durations and costs.
+- Selected Fastest or Scenic route preference.
+
+#### Hotel Suggestions
+Displayed when the user enables hotel recommendations.
+
+#### Flight Suggestions
+Displayed when the user enables flight recommendations.
+
+#### Estimated Costs
+A breakdown of:
+- Attraction entrance fees.
+- Transportation costs.
+- Estimated meal expenses, when included.
+- Optional activities.
+- Hotel and flight costs, if the user selects specific options.
+
+Suggested hotels and flights that have not been selected will be displayed separately and will not automatically be included in the trip total.
+
+Users will be able to return to previous steps to edit their choices and regenerate the itinerary.
 
 ---
 
 ## 3. Design Patterns
 
-The project will integrate **six design patterns** into one application.
+The project will implement **six design patterns**.
 
-| Design Pattern | Planned Implementation                                                                       |
-| -------------- | -------------------------------------------------------------------------------------------- |
-| **Factory**    | Creates attraction objects based on their categories, such as museums, parks, and landmarks. |
-| **Builder**    | Assembles a complete `TripPlan` from the user's selections.                                  |
-| **Strategy**   | Implements Fastest and Scenic routing algorithms.                                            |
-| **Facade**     | Provides a simplified interface to mock hotel and flight services.                           |
-| **Decorator**  | Adds optional activities or guided tours to the trip and updates its cost.                   |
-| **Observer**   | Notifies the application when the itinerary is modified.                                     |
+| Design Pattern | Planned Implementation |
+|---|---|
+| **Factory** | Creates attraction objects based on categories such as museums, parks, and landmarks. |
+| **Builder** | Constructs a complete `TripPlan` using the information collected during the planning process. |
+| **Strategy** | Implements Fastest and Scenic route-selection strategies. |
+| **Facade** | Provides a simplified interface for retrieving hotel and flight suggestions from mock services. |
+| **Decorator** | Adds optional activities or guided tours to an existing trip and updates its description and estimated cost. |
+| **Observer** | Notifies relevant application components when itinerary selections change, allowing displayed information to be updated. |
 
-All six patterns will be implemented within the same application and demonstrated during the project defense.
+The six patterns will be integrated into a single application rather than implemented as unrelated examples.
+
+### Design Pattern Integration
+
+The planned workflow is:
+
+1. **Factory** creates objects representing selected attractions.
+2. **Strategy** selects route alternatives according to the user's preference.
+3. **Builder** assembles the trip schedule and selected information into a `TripPlan`.
+4. **Facade** retrieves optional hotel and flight suggestions.
+5. **Decorator** adds optional activities to the trip.
+6. **Observer** responds to itinerary changes and triggers relevant updates.
 
 ---
 
 ## 4. Team Responsibilities
 
-| Team Member            | Design Patterns             |
-| ---------------------- | --------------------------- |
-| **Byerik Farida**      | Factory, Builder, Strategy  |
+| Team Member | Assigned Design Patterns |
+|---|---|
+| **Byerik Farida** | Factory, Builder, Strategy |
 | **Kashtayeva Yasmina** | Facade, Decorator, Observer |
 
-Both team members will participate in application integration, testing, documentation, and preparation for the final defense.
+Both team members will also contribute to:
+
+- Integration of the design patterns.
+- JavaFX interface development.
+- Testing and debugging.
+- UML diagrams.
+- Final project report.
+- Project presentation and defense.
 
 ---
 
 ## 5. Planned Technologies
 
-- **Programming Language:** Java
-- **Development Environment:** IntelliJ IDEA
-- **User Interface:** JavaFX
-- **Version Control:** Git and GitHub
-- **Data Storage:** Local files (CSV or JSON)
-- **Hotel and Flight Services:** Mock implementations
-- **UML Diagrams:** To be developed during implementation
+| Technology | Purpose |
+|---|---|
+| **Java** | Main programming language |
+| **JavaFX** | Graphical user interface |
+| **IntelliJ IDEA** | Development environment |
+| **Git & GitHub** | Version control and collaboration |
+| **JSON or CSV** | Local storage of tourist and route data |
+| **Mock Services** | Demonstration hotel and flight data |
+| **UML** | Documentation of application architecture and design patterns |
 
-The application is planned to have multiple screens with clickable buttons and a graphical interface.
+### User Interface
+
+The application will use a **multi-step graphical interface**, inspired by modern travel-planning applications.
+
+Planned interface elements include:
+
+- A welcome screen.
+- A progress indicator showing the current planning step.
+- Destination and attraction cards.
+- Clickable buttons.
+- Date selection controls.
+- Transportation selection controls.
+- Solo/Couple/Friends/Family cards.
+- Optional-service switches.
+- Back and Continue navigation.
+- A final itinerary page with separate sections or tabs.
+
+The interface will be implemented in JavaFX.
 
 ---
 
-## 6. Planned Application Screens
+## 6. Itinerary Scheduling
 
-1. **Welcome Page** — Introduction and Start Planning button.
-2. **City Selection** — Choose Astana, Almaty, or Turkistan.
-3. **Trip Details** — Select trip duration and starting time.
-4. **Attractions** — Select multiple places to visit.
-5. **Hotel Selection** — Explore and choose accommodation.
-6. **Cafe Selection** — Choose dining options and meal breaks.
-7. **Route & Transportation** — Select Fastest/Scenic routes and transportation for individual segments.
-8. **Additional Activities** — Add optional tours or services.
-9. **Final Itinerary** — View the complete schedule and estimated costs.
+The application will generate a daily schedule using predefined estimates for:
+
+- Attraction visit durations.
+- Travel times between locations.
+- Transportation choices.
+- Meal breaks.
+- Opening hours.
+
+For example, a generated day might contain:
+
+| Time | Activity | Transportation |
+|---|---|---|
+| 09:00–09:20 | Travel to the first attraction | Taxi |
+| 09:20–10:20 | Visit Attraction A | — |
+| 10:20–10:40 | Travel to Attraction B | Bus |
+| 10:40–12:10 | Visit Attraction B | — |
+| 12:10–12:25 | Travel to a cafe | Walking |
+| 12:25–13:25 | Lunch break | — |
+| 13:25–13:45 | Travel to Attraction C | Taxi |
+| 13:45–15:15 | Visit Attraction C | — |
+
+*This is an illustrative schedule, not a verified real-world route.*
+
+The planner will aim to prevent basic scheduling conflicts, such as assigning a visit outside an attraction's opening hours.
+
+If too many attractions are selected for the available time, the application will notify the user and request adjustments.
 
 ---
 
-## 7. Development Plan
+## 7. Data and Project Scope
 
-**Phase 1 — Research and Data Collection**
+The initial version will use a curated local dataset containing:
 
-- Collect information about real attractions, cafes, and hotels in the selected cities.
-- Prepare sample transportation routes and estimated travel times.
-- Organize data into local files.
+- Real attractions in Astana, Almaty, and Turkistan.
+- Attraction descriptions and opening hours.
+- Estimated visit durations and entrance fees.
+- Selected transportation alternatives between supported locations.
+- Sample hotel information.
+- Sample flight information.
+- Cafe information for optional meal recommendations.
 
-**Phase 2 — Core Java Development**
+Prices and travel times will be clearly identified as **estimates or demonstration data**.
 
-- Create the main application models.
-- Implement Factory, Builder, and Strategy.
-- Implement Facade, Decorator, and Observer.
-- Integrate the six patterns.
+The application will not provide live traffic conditions, real-time ticket availability, or guaranteed booking prices.
 
-**Phase 3 — Application Interface**
+### Initial Scope Limitations
 
-- Develop the JavaFX screens.
-- Connect user actions to the Java logic.
-- Implement navigation between screens.
+To keep the project manageable for a two-person team:
 
-**Phase 4 — Testing**
+- Only three Kazakhstan destinations will be supported initially.
+- Trips will be limited to 1–3 days.
+- Route planning will use predefined alternatives.
+- Hotel and flight suggestions will use mock services.
+- No online booking or payment processing will be implemented.
+- No AI-generated travel recommendations will be required.
 
+---
+
+## 8. Development Plan
+
+### Phase 1 — Planning and Data Collection
+- Finalize application requirements.
+- Collect information about selected Kazakhstan attractions.
+- Prepare sample route, transportation, hotel, flight, and cafe data.
+- Design the main Java classes and UML diagrams.
+
+### Phase 2 — Core Java Implementation
+- Implement the main domain models.
+- Develop Factory, Builder, and Strategy.
+- Develop Facade, Decorator, and Observer.
+- Integrate the patterns into one trip-planning workflow.
+
+### Phase 3 — JavaFX Interface
+- Create the welcome page.
+- Implement the four planning steps.
+- Implement the final itinerary page.
+- Connect user interactions to the Java application logic.
+- Preserve user selections when navigating between pages.
+
+### Phase 4 — Testing and Improvements
 - Test each design pattern.
-- Test itinerary generation.
-- Test route selection and transportation options.
-- Check basic scheduling conflicts and cost calculations.
+- Test multiple-attraction selection.
+- Test Fastest and Scenic routing.
+- Test transportation choices for individual route segments.
+- Test optional hotel, flight, and cafe suggestions.
+- Test itinerary generation, scheduling conflicts, and cost calculations.
 
-**Phase 5 — Documentation and Defense**
-
+### Phase 5 — Documentation and Defense
 - Prepare UML diagrams.
 - Capture application screenshots.
 - Write the final PDF report.
 - Prepare the source code ZIP archive.
-- Demonstrate the application and explain the implemented design patterns.
+- Demonstrate the application and explain the six design patterns.
 
 ---
 
-## 8. Future Improvements
+## 9. Possible Future Improvements
 
-Possible improvements after the initial version include:
+Potential improvements include:
 
-- Integration with real hotel and flight APIs.
-- Live public transportation information.
-- Interactive maps and navigation.
+- Integration with real flight and hotel APIs.
+- Live public transportation schedules.
+- Interactive maps.
+- Real-time route calculations.
 - More destinations across Kazakhstan.
-- Real-time ticket prices and availability.
-- Online hotel and flight booking.
+- User accounts and saved trips.
+- Online booking and payments.
+- AI-assisted travel recommendations.
 
 ---
+
+## 10. Questions for the Instructor
+
+We would appreciate feedback on the following questions before implementation:
+
+1. **Are mock hotel and flight services acceptable for demonstrating the Facade pattern, or must we integrate real external APIs?**
+2. **Can we use predefined transportation and route data for the Fastest and Scenic Strategy implementations?**
+3. **Is the proposed functionality appropriate for a two-student final project, or should we reduce the scope?**
+4. **Is JavaFX an appropriate choice for the graphical user interface?**
+5. **Does the proposed integration of the six design patterns meet the project requirements?**
+
+---
+
+**Note:** This README describes our planned project. The application is currently in the planning/development stage, and implementation details may change based on instructor feedback.
