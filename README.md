@@ -378,17 +378,4 @@ To keep the project manageable for a two-person team:
 
 ---
 
-## 9. Possible Future Improvements
 
-Potential improvements include:
-
-- Integration with real flight and hotel APIs.
-- Live public transportation schedules.
-- Interactive maps.
-- Real-time route calculations.
-- More destinations across Kazakhstan.
-- User accounts and saved trips.
-- Online booking and payments.
-- AI-assisted travel recommendations.
-
----
